@@ -30,4 +30,23 @@ public class AuthorServiceImpl implements AuthorService {
     public Author getAuthorByLastName(String lastName) {
         return authorDAO.getAuthorBy(lastName);
     }
+
+    @Override
+    public boolean save(Author author) {
+        return authorDAO.saveAuthor(author);
+    }
+
+    @Override
+    public boolean update(Author author) {
+        Author authorToUpdate = getAuthorByLastName(author.getLastName());
+        authorToUpdate.setDateOfBirth(author.getDateOfBirth());
+        authorToUpdate.setFirstName(author.getFirstName());
+        return authorDAO.updateAuthor(authorToUpdate);
+    }
+
+    @Override
+    public boolean delete(int id) {
+        Author author = getAuthorBy(id);
+        return authorDAO.deleteAuthor(author);
+    }
 }
