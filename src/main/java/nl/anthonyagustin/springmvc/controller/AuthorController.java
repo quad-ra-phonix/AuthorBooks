@@ -39,7 +39,7 @@ public class AuthorController {
     }
 
     @RequestMapping(value = "/author/add", method = RequestMethod.POST)
-    public String postAddAuthor(@ModelAttribute("author") Author author, BindingResult result, ModelMap model) {
+    public String postAddAuthor(@ModelAttribute("author") Author author, BindingResult result) {
         authorService.save(author);
         return "redirect:authors";
     }

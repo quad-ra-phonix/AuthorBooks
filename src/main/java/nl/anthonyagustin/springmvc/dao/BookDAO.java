@@ -6,7 +6,11 @@ import java.util.List;
 
 public interface BookDAO {
 
-    public List<Book> getBooks();
-    public Book getBookBy(int id);
-    public Book getBookBy(String title);
+    List<Book> getBooks();
+    Book getBookBy(int id);
+    Book getBookBy(String title);
+
+    boolean save(Book book);
+    boolean update(Book book);
+    boolean delete(Book book);
 }

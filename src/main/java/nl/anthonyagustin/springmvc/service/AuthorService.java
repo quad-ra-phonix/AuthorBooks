@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface AuthorService {
 
-    public List<Author> getAuthors();
-    public Author getAuthorBy(int id);
-    public Author getAuthorByLastName(String lastName);
+    List<Author> getAuthors();
+    Author getAuthorBy(int id);
+    Author getAuthorByLastName(String lastName);
 
-    public boolean save(Author author);
-    public boolean update(Author author);
-    public boolean delete(int id);
+    boolean save(Author author);
+    boolean update(Author author);
+    boolean delete(int id);
 }
