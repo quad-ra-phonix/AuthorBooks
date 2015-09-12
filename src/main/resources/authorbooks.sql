@@ -11,9 +11,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Databasestructuur van example_app wordt geschreven
-DROP DATABASE IF EXISTS `example_app`;
-CREATE DATABASE IF NOT EXISTS `example_app` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `example_app`;
+DROP DATABASE IF EXISTS `author_books`;
+CREATE DATABASE IF NOT EXISTS `author_books` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `author_books`;
 
 
 -- Structuur van  tabel example_app.authors wordt geschreven
