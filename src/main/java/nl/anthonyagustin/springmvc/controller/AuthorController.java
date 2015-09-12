@@ -1,5 +1,6 @@
 package nl.anthonyagustin.springmvc.controller;
 
+import nl.anthonyagustin.springmvc.form.model.AuthorForm;
 import nl.anthonyagustin.springmvc.model.Author;
 import nl.anthonyagustin.springmvc.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +33,16 @@ public class AuthorController {
 
     @RequestMapping(value = "/author/add", method = RequestMethod.GET)
     public String getAddAuthor(ModelMap model) {
-        Author author = new Author();
+        AuthorForm author = new AuthorForm();
         model.addAttribute("author", author);
         model.addAttribute("parameter", "add");
         return "addAuthor";
     }
 
     @RequestMapping(value = "/author/add", method = RequestMethod.POST)
-    public String postAddAuthor(@ModelAttribute("author") Author author, BindingResult result) {
+    public String postAddAuthor(@ModelAttribute("author") AuthorForm author, BindingResult result) {
         authorService.save(author);
-        return "redirect:authors";
+        return "redirect:/authors";
     }
 
     @RequestMapping(value = "author/update/{authorId}", method = RequestMethod.GET)
@@ -52,16 +53,10 @@ public class AuthorController {
         return "addAuthor";
     }
 
-    @RequestMapping(value = "/author/add", method = RequestMethod.POST)
-    public String postUpdateAuthor(@ModelAttribute("author") Author author, BindingResult result, ModelMap model) {
-        authorService.update(author);
-        return "redirect:authors";
-    }
-
     @RequestMapping(value = "/author/delete/{authorId}", method = RequestMethod.POST)
     public String postDeleteAuthor(@PathVariable Integer authorId) {
         authorService.delete(authorId);
-        return "redirect:authors";
+        return "redirect:/authors";
     }
 
 

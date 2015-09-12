@@ -14,10 +14,9 @@
   <body>
     <div class="container">
 	    <ul class="nav nav-tabs">
-		  <li role="presentation" class="active"><a href="/">Home</a></li>
+		  <li role="presentation" class="active"><a href="/${pageContext.request.contextPath}">Home</a></li>
 			<li role="presentation"><a href="${pageContext.request.contextPath}/books">Books</a></li>
-		  <li role="presentation"><a href="${pageContext.request.contextPath}/profile">Profile</a></li>
-		  <li role="presentation"><a href="${pageContext.request.contextPath}/messages">Messages</a></li>
+			<li role="presentation"><a href="${pageContext.request.contextPath}/authors">Authors</a></li>
 		</ul>
 		<div class="jumbotron">
 			<h1>Hello, world!</h1>

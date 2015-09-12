@@ -16,8 +16,7 @@
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="/">Home</a></li>
         <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/books">Books</a></li>
-        <li role="presentation"><a href="${pageContext.request.contextPath}/profile">Profile</a></li>
-        <li role="presentation"><a href="${pageContext.request.contextPath}/messages">Messages</a></li>
+        <li role="presentation"><a href="${pageContext.request.contextPath}/authors">Authors</a></li>
     </ul>
     <div class="row">
         <div class="col-lg-12">
@@ -29,6 +28,8 @@
                     <th>Title</th>
                     <th>Author</th>
                     <th>Genre</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,45 +38,17 @@
                         <td>${book.title}</td>
                         <td>${book.author.lastName}, ${book.author.firstName}</td>
                         <td>${book.genre}</td>
+                        <td>
+                            <button class="btn btn-warning">Edit</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
-    </div>
-    <div class="row">
-        <h3>All authors and a list of books they've written</h3>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Last name</th>
-                    <th>First name</th>
-                    <th>Date of birth</th>
-                    <th>Books</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="author" items="${authors}">
-                    <tr>
-                        <td>${author.lastName}</td>
-                        <td>${author.firstName}</td>
-                        <td>${author.dateOfBirth}</td>
-                        <td>
-                            <c:forEach var="book" items="${author.books}" varStatus="status">
-                                <c:choose>
-                                    <c:when test="${status.last}">
-                                        ${book.title}
-                                    </c:when>
-                                    <c:otherwise>
-                                        ${book.title},&nbsp;
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
     </div>
 </div>
 <!-- jQuery first, then Bootstrap JS. -->

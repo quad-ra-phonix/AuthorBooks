@@ -1,5 +1,6 @@
 package nl.anthonyagustin.springmvc.service;
 
+import nl.anthonyagustin.springmvc.form.model.AuthorForm;
 import nl.anthonyagustin.springmvc.model.Author;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface AuthorService {
     Author getAuthorBy(int id);
     Author getAuthorByLastName(String lastName);
 
-    boolean save(Author author);
-    boolean update(Author author);
+    boolean save(AuthorForm author);
+    boolean update(AuthorForm author);
     boolean delete(int id);
 }
