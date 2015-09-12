@@ -34,12 +34,13 @@ public class BookController {
         BookForm book = new BookForm();
         model.addAttribute("book", book);
         model.addAttribute("parameter", "add");
+        model.addAttribute("authors", authorService.getAuthors());
         return "addBook";
     }
 
     @RequestMapping(value = "/book/add", method = RequestMethod.POST)
     public String postAddBook(@ModelAttribute("book") BookForm book, BindingResult result) {
-        bookService.update(book);
-        return "redirect:books";
+        bookService.save(book);
+        return "redirect:/books";
     }
 }

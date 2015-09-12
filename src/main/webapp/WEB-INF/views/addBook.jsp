@@ -22,13 +22,18 @@
   </ul>
   <div class="row">
     <h3>All authors and a list of books they've written</h3>
-    <form:form method="post" commandName="author" action="${pageContext.request.contextPath}/author/add">
-      <form:label path="firstName">First name</form:label>
-      <form:input type="text" path="firstName" />
-      <form:label path="lastName">Last name</form:label>
-      <form:input type="text" path="lastName" />
-      <form:label path="dateOfBirth">Date of birth</form:label>
-      <form:input type="text" path="dateOfBirth" />
+    <form:form method="post" commandName="book" action="${pageContext.request.contextPath}/book/add">
+      <form:label path="title">Title</form:label>
+      <form:input type="text" path="title" />
+      <form:label path="genre">Genre</form:label>
+      <form:input type="text" path="genre" />
+      <form:select path="authorId">
+        <form:option value="0" label="--- Select ---"/>
+        <c:forEach var="author" items="${authors}">
+          <form:option value="${author.id}">${author.lastName}, ${author.firstName}</form:option>
+        </c:forEach>
+      </form:select>
+
       <form:button type="submit">Submit</form:button>
     </form:form>
 
