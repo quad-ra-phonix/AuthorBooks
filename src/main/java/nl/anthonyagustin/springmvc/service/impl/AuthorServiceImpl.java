@@ -63,7 +63,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     private Date handleDate(String dateString) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
             date = formatter.parse(dateString);

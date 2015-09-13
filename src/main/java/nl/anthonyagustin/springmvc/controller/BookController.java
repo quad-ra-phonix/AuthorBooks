@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,6 +42,31 @@ public class BookController {
     @RequestMapping(value = "/book/add", method = RequestMethod.POST)
     public String postAddBook(@ModelAttribute("book") BookForm book, BindingResult result) {
         bookService.save(book);
+        return "redirect:/books";
+    }
+
+    @RequestMapping(value = "/book/update/{bookId}", method = RequestMethod.GET)
+    public String getUpdateBook(@PathVariable Integer bookId, ModelMap model) {
+        Book book = bookService.getBookBy(bookId);
+        BookForm bookForm = new BookForm();
+        bookForm.setGenre(book.getGenre());
+        bookForm.setTitle(book.getTitle());
+        bookForm.setAuthorId(book.getAuthor().getId());
+        model.addAttribute("book", bookForm);
+        model.addAttribute("parameter", "update");
+        model.addAttribute("authors", authorService.getAuthors());
+        return "addBook";
+    }
+
+    @RequestMapping(value = "/book/update", method = RequestMethod.POST)
+    public String postUpdateBook(@ModelAttribute("book") BookForm book, BindingResult reesult) {
+        bookService.update(book);
+        return "redirect:/books";
+    }
+
+    @RequestMapping(value = "/book/delete/{bookId}", method = RequestMethod.POST)
+    public String postDeleteBook(@PathVariable Integer bookId) {
+        bookService.delete(bookId);
         return "redirect:/books";
     }
 }

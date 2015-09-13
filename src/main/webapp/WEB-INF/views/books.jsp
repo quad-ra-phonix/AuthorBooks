@@ -39,10 +39,14 @@
                         <td>${book.author.lastName}, ${book.author.firstName}</td>
                         <td>${book.genre}</td>
                         <td>
-                            <button class="btn btn-warning">Edit</button>
+                            <form method="get" action="${pageContext.request.contextPath}/book/update/${book.id}">
+                                <button class="btn btn-warning">Edit</button>
+                            </form>
                         </td>
                         <td>
-                            <button class="btn btn-danger">Delete</button>
+                            <form method="post" action="${pageContext.request.contextPath}/book/delete/${book.id}">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>

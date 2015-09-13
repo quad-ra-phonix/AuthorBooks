@@ -22,7 +22,11 @@
   </ul>
   <div class="row">
     <h3>All authors and a list of books they've written</h3>
-    <form:form method="post" commandName="book" action="${pageContext.request.contextPath}/book/add">
+    <c:set var="action" value="${pageContext.request.contextPath}/book/add" />
+    <c:if test="${parameter eq 'update'}">
+      <c:set var="action" value="${pageContext.request.contextPath}/book/update" />
+    </c:if>
+    <form:form method="post" commandName="book" action="${action}">
       <form:label path="title">Title</form:label>
       <form:input type="text" path="title" />
       <form:label path="genre">Genre</form:label>

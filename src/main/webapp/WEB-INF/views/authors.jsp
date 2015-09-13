@@ -51,10 +51,14 @@
                         </c:forEach>
                     </td>
                     <td>
-                        <button class="btn btn-warning">Edit</button>
+                        <form method="get" action="${pageContext.request.contextPath}/author/update/${author.id}">
+                            <button type="submit" class="btn btn-warning">Edit</button>
+                        </form>
                     </td>
                     <td>
-                        <button class="btn btn-danger">Delete</button>
+                        <form method="post" action="${pageContext.request.contextPath}/author/delete/${author.id}">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
             </c:forEach>

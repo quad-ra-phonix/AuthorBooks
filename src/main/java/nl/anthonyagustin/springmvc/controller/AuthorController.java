@@ -45,12 +45,18 @@ public class AuthorController {
         return "redirect:/authors";
     }
 
-    @RequestMapping(value = "author/update/{authorId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/author/update/{authorId}", method = RequestMethod.GET)
     public String getUpdateAuthor(@PathVariable Integer authorId, ModelMap model) {
         Author author = authorService.getAuthorBy(authorId);
         model.addAttribute("author", author);
         model.addAttribute("parameter", "update");
         return "addAuthor";
+    }
+
+    @RequestMapping(value = "/author/update", method = RequestMethod.POST)
+    public String postUpdateAuthor(@ModelAttribute("author") AuthorForm author, BindingResult result) {
+        authorService.update(author);
+        return "redirect:/authors";
     }
 
     @RequestMapping(value = "/author/delete/{authorId}", method = RequestMethod.POST)
