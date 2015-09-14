@@ -64,7 +64,7 @@
             </div>
           </div>
           <div class="panel-footer">
-            <form:button>Submit</form:button>
+            <form:button class="btn btn-primary">Submit</form:button>
           </div>
         </div>
       </form:form>
