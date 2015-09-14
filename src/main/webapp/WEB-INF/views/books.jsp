@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h3>All books with author's last name and first name</h3>
-
+            <a href="${pageContext.request.contextPath}/book/add"><button class="btn btn-primary">Add author</button></a>
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>

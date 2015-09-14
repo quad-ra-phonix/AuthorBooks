@@ -21,6 +21,7 @@
     </ul>
     <div class="row">
         <h3>All authors and a list of books they've written</h3>
+        <a href="${pageContext.request.contextPath}/author/add"><button class="btn btn-primary">Add author</button></a>
         <table class="table table-striped table-bordered">
             <thead>
             <tr>

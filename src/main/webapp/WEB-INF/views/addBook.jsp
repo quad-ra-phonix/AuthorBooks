@@ -17,30 +17,59 @@
 <div class="container">
   <ul class="nav nav-tabs">
     <li role="presentation"><a href="/">Home</a></li>
-    <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/books">Books</a></li>
-    <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/authors">Authors</a></li>
+    <li role="presentation"><a href="${pageContext.request.contextPath}/books">Books</a></li>
+    <li role="presentation"><a href="${pageContext.request.contextPath}/authors">Authors</a></li>
   </ul>
   <div class="row">
-    <h3>All authors and a list of books they've written</h3>
-    <c:set var="action" value="${pageContext.request.contextPath}/book/add" />
-    <c:if test="${parameter eq 'update'}">
-      <c:set var="action" value="${pageContext.request.contextPath}/book/update" />
-    </c:if>
-    <form:form method="post" commandName="book" action="${action}">
-      <form:label path="title">Title</form:label>
-      <form:input type="text" path="title" />
-      <form:label path="genre">Genre</form:label>
-      <form:input type="text" path="genre" />
-      <form:select path="authorId">
-        <form:option value="0" label="--- Select ---"/>
-        <c:forEach var="author" items="${authors}">
-          <form:option value="${author.id}">${author.lastName}, ${author.firstName}</form:option>
-        </c:forEach>
-      </form:select>
-
-      <form:button type="submit">Submit</form:button>
-    </form:form>
-
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <c:set var="action" value="${pageContext.request.contextPath}/book/add" />
+        <c:if test="${parameter eq 'update'}">
+            <c:set var="action" value="${pageContext.request.contextPath}/book/update" />
+        </c:if>
+        <form:form method="post" commandName="book" action="${action}">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Add book</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-6">
+                  <form:label path="title">Title</form:label>
+              </div>
+              <div class="col-xs-6">
+                  <form:input type="text" path="title" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                  <form:label path="genre">Genre</form:label>
+              </div>
+              <div class="col-xs-6">
+                  <form:input type="text" path="genre" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <form:label path="authorId">Author</form:label>
+              </div>
+              <div class="col-xs-6">
+                  <form:select path="authorId">
+                      <form:option value="0" label="--- Select ---"/>
+                      <c:forEach var="author" items="${authors}">
+                          <form:option value="${author.id}">${author.lastName}, ${author.firstName}</form:option>
+                      </c:forEach>
+                  </form:select>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <form:button>Submit</form:button>
+          </div>
+        </div>
+      </form:form>
+    </div>
+    <div class="col-md-4"></div>
   </div>
 </div>
 <!-- jQuery first, then Bootstrap JS. -->
